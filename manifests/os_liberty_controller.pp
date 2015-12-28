@@ -28,9 +28,11 @@ class role::os_liberty_controller (
   }
   
   class {'profile::nova_controller':
-    db_password               => $admin_password,
-    rabbit_password           => $admin_password,
-    keystone_password         => $admin_password,
-    neutron_keystone_password => $admin_password,
+    db_password                           => $admin_password,
+    rabbit_password                       => $admin_password,
+    keystone_password                     => $admin_password,
+    
+    neutron_metadata_proxy_shared_secret  => $admin_password,
+    neutron_keystone_password             => $admin_password,
   }
 }
