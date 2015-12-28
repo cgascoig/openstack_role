@@ -20,4 +20,10 @@ class role::os_liberty_controller (
     admin_user_password => $admin_password,
     admin_user_email    => 'admin@aci.ceclab.info',
   }
+  
+  class {'profile::glance':
+    db_password         => $admin_password,
+    rabbit_password     => $admin_password,
+    keystone_password   => $admin_password,
+  }
 }
