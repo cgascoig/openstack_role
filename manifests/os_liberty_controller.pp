@@ -35,4 +35,13 @@ class role::os_liberty_controller (
     neutron_metadata_proxy_shared_secret  => $admin_password,
     neutron_keystone_password             => $admin_password,
   }
+  
+  class {'profile::neutron_controller':
+    db_password                           => $admin_password,
+    rabbit_password                       => $admin_password,
+    keystone_password                     => $admin_password,
+  
+    neutron_metadata_proxy_shared_secret  => $admin_password,
+    nova_keystone_password             => $admin_password,
+  }
 }
