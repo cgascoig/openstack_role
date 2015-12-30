@@ -44,4 +44,7 @@ class role::os_liberty_controller (
     neutron_metadata_proxy_shared_secret  => $admin_password,
     nova_keystone_password             => $admin_password,
   }
+
+  class {'profile::horizon':
+  }
 }
