@@ -17,4 +17,9 @@ class role::os_liberty_compute (
     
     neutron_keystone_password => $admin_password,
   }
+  
+  class { 'profile::neutron_compute':
+    rabbit_host       => $controller_host,
+    rabbit_password   => $admin_password,
+  }
 }
