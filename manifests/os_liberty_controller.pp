@@ -1,9 +1,17 @@
 class role::os_liberty_controller (
   String $admin_password,
+  String $os_username,
+  String $os_password, #Not plain text!
+  String $ssh_key, #RSA public key
 ){
   
   
-  include profile::base
+  class {'profile::base':
+    os_username     => $os_username,
+    os_password     => $os_password,
+    ssh_key         => $ssh_key,
+  }
+  
   class {'profile::mysql':
     root_password    => $admin_password,
   }

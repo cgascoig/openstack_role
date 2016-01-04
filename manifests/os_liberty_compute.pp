@@ -1,8 +1,15 @@
 class role::os_liberty_compute (
   String $admin_password,
   String $controller_host,
+  String $os_username,
+  String $os_password, #Not plain text!
+  String $ssh_key, #RSA public key
 ) {
-  include profile::base
+  class {'profile::base':
+    os_username     => $os_username,
+    os_password     => $os_password,
+    ssh_key         => $ssh_key,
+  }
   
   class { 'profile::nova_compute':
     db_host                   => $controller_host,
