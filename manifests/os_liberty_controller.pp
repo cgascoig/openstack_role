@@ -3,6 +3,8 @@ class role::os_liberty_controller (
   String $os_username,
   String $os_password, #Not plain text!
   String $ssh_key, #RSA public key
+  String $gbp_repo_url,
+  String $opflex_repo_url,
 ){
   
   
@@ -10,6 +12,8 @@ class role::os_liberty_controller (
     os_username     => $os_username,
     os_password     => $os_password,
     ssh_key         => $ssh_key,
+    gbp_repo_url    => $gbp_repo_url,
+    opflex_repo_url => $opflex_repo_url,
   }
   
   class {'profile::mysql':
